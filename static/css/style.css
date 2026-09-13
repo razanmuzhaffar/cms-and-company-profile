@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+    --swiss-bg: #fbfbfb;
+    --swiss-surface: #ffffff;
+    --swiss-text-primary: #0f172a;
+    --swiss-text-secondary: #475569;
+    --swiss-text-muted: #94a3b8;
+    --swiss-border: #e2e8f0;
+    --swiss-border-dark: #0f172a;
+    --swiss-accent: #0284c7;
+    --swiss-accent-hover: #0369a1;
+    --swiss-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --swiss-font-mono: 'Space Grotesk', ui-monospace, monospace;
+}
+
+body {
+    font-family: var(--swiss-font-body);
+    background-color: var(--swiss-bg);
+    color: var(--swiss-text-primary);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+}
+
+/* ─── Typography & Swiss Tags ───────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: 700;
+    color: var(--swiss-text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.swiss-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--swiss-font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--swiss-text-secondary);
+    padding: 0.25rem 0.65rem;
+    background: #f1f5f9;
+    border: 1px solid var(--swiss-border);
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+}
+
+.swiss-tag.accent {
+    background: #e0f2fe;
+    color: #0369a1;
+    border-color: #bae6fd;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin-bottom: 0.5rem;
+}
+
+.section-lead {
+    font-size: 1.05rem;
+    color: var(--swiss-text-secondary);
+    max-width: 600px;
+}
+
+/* ─── Navbar ────────────────────────────────────────────────────────────── */
+.swiss-navbar {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--swiss-border);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.swiss-navbar .navbar-brand {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: 1.25rem;
+    color: var(--swiss-text-primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.swiss-navbar .nav-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--swiss-text-secondary) !important;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
+}
+
+.swiss-navbar .nav-link:hover,
+.swiss-navbar .nav-link.active {
+    color: var(--swiss-text-primary) !important;
+}
+
+/* ─── Cards & Containers ────────────────────────────────────────────────── */
+.swiss-card {
+    background: var(--swiss-surface);
+    border: 1px solid var(--swiss-border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.swiss-card:hover {
+    transform: translateY(-3px);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+.swiss-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid var(--swiss-border);
+}
+
+.swiss-card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────────────── */
+.btn-swiss-primary {
+    background-color: var(--swiss-text-primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 3px;
+    border: 1px solid var(--swiss-text-primary);
+    letter-spacing: -0.01em;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-swiss-primary:hover {
+    background-color: #1e293b;
+    border-color: #1e293b;
+    color: #ffffff;
+}
+
+.btn-swiss-outline {
+    background-color: transparent;
+    color: var(--swiss-text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 3px;
+    border: 1px solid var(--swiss-border-dark);
+    letter-spacing: -0.01em;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-swiss-outline:hover {
+    background-color: var(--swiss-text-primary);
+    color: #ffffff;
+}
+
+/* ─── Grid Dividers & Editorial Details ──────────────────────────────────── */
+.border-swiss {
+    border: 1px solid var(--swiss-border) !important;
+}
+
+.border-swiss-bottom {
+    border-bottom: 1px solid var(--swiss-border) !important;
+}
+
+.swiss-feature-box {
+    background: var(--swiss-surface);
+    border: 1px solid var(--swiss-border);
+    padding: 2rem;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.swiss-feature-num {
+    font-family: var(--swiss-font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+.swiss-footer {
+    background-color: var(--swiss-surface);
+    border-top: 1px solid var(--swiss-border);
+    padding: 3.5rem 0 2rem;
+    color: var(--swiss-text-secondary);
+}
+
+.swiss-footer a {
+    color: var(--swiss-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.swiss-footer a:hover {
+    color: var(--swiss-text-primary);
+}

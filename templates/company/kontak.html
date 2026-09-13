@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Hubungi Kami{% endblock %}
+{% block content %}
+
+<!-- Header -->
+<div class="border-swiss-bottom bg-white py-5">
+    <div class="container">
+        <span class="swiss-tag accent mb-2">05 / KOMUNIKASI</span>
+        <h1 class="section-title mb-2">Hubungi Kami</h1>
+        <p class="section-lead mb-0">Sampaikan pertanyaan teknis, konsultasi kebutuhan sistem, atau penjajakan kemitraan kepada tim kami.</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-5">
+        <!-- Info Kontak & Maps (Satu Box Terpadu) -->
+        <div class="col-lg-5">
+            <div class="swiss-feature-box">
+                <span class="swiss-tag mb-3">INFORMASI RESMI</span>
+                <h3 class="h4 fw-bold mb-4">Kantor &amp; Kontak</h3>
+
+                <div class="d-flex flex-column gap-3 text-secondary small mb-4">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="bg-light p-2 rounded-1 text-dark border-swiss">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <strong class="text-dark d-block">Alamat Perusahaan</strong>
+                            <span>{{ profil.alamat|default:"Jl. Jenderal Sudirman No. 123, Jakarta Pusat" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="bg-light p-2 rounded-1 text-dark border-swiss">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <strong class="text-dark d-block">Telepon Langsung</strong>
+                            <span>{{ profil.telepon|default:"0812-3456-7890" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="bg-light p-2 rounded-1 text-dark border-swiss">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <strong class="text-dark d-block">Surat Elektronik</strong>
+                            <span>{{ profil.email|default:"info@digitalsolusinusantara.co.id" }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% if profil.google_maps_embed %}
+                <hr class="border-swiss my-4">
+                <span class="swiss-tag mb-2">LOKASI KANTOR</span>
+                <div class="ratio ratio-16x9 rounded-1 overflow-hidden border-swiss mt-2">
+                    {% if 'iframe' in profil.google_maps_embed %}
+                        {{ profil.google_maps_embed|safe }}
+                    {% else %}
+                        <iframe src="{{ profil.google_maps_embed }}" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Form Hubungi Kami -->
+        <div class="col-lg-7">
+            <div class="p-4 p-lg-5 bg-white border-swiss rounded-1 shadow-sm">
+                <span class="swiss-tag accent mb-3">FORMULIR PERTANYAAN</span>
+                <h3 class="h4 fw-bold mb-2">Kirim Pesan</h3>
+                <p class="text-secondary small mb-4">Isi formulir di bawah ini dengan lengkap. Pesan Anda akan langsung dicatat ke dalam database panel admin.</p>
+
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-dark border-swiss d-flex align-items-center gap-2 mb-4" role="alert">
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                    <div>{{ message }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-uppercase" style="letter-spacing: 0.04em;">Nama Lengkap</label>
+                        {{ form.nama }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-uppercase" style="letter-spacing: 0.04em;">Alamat Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-uppercase" style="letter-spacing: 0.04em;">Subjek Pesan</label>
+                        {{ form.subjek }}
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-uppercase" style="letter-spacing: 0.04em;">Isi Pesan</label>
+                        {{ form.pesan }}
+                    </div>
+                    <button type="submit" class="btn-swiss-primary w-100 py-3 justify-content-center">
+                        <i class="fa-solid fa-paper-plane me-1"></i> Kirim Pesan Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

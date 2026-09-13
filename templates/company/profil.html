@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Profil Perusahaan{% endblock %}
+{% block content %}
+
+<!-- Header -->
+<div class="border-swiss-bottom bg-white py-5">
+    <div class="container">
+        <span class="swiss-tag accent mb-2">01 / TENTANG ORGANISASI</span>
+        <h1 class="section-title mb-2">Profil Perusahaan</h1>
+        <p class="section-lead mb-0">Landasan sejarah, arah visi strategis, misi berkelanjutan, dan nilai-nilai
+            integritas organisasi.</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Sejarah -->
+    <div class="row g-5 mb-5 pb-5 border-swiss-bottom align-items-center">
+        <div class="col-lg-7">
+            <span class="swiss-tag mb-3">HISTORI &amp; LATAR BELAKANG</span>
+            <h2 class="h3 fw-bold mb-3">Perjalanan &amp; Komitmen</h2>
+            <div class="text-secondary" style="font-size: 1.05rem; line-height: 1.8;">
+                {{ profil.sejarah|linebreaks }}
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="p-4 border-swiss bg-white rounded-1 text-center shadow-sm">
+                {% if profil.logo %}
+                <img src="{{ profil.logo.url }}" class="img-fluid" style="max-height: 220px; object-fit: contain;"
+                    alt="{{ profil.nama_perusahaan }}">
+                {% else %}
+                <div class="py-5 text-muted">
+                    <i class="fa-solid fa-building-columns fa-3x mb-3 text-secondary"></i>
+                    <h5 class="fw-bold mb-0 text-dark">{{ profil.nama_perusahaan }}</h5>
+                </div>
+                {% endif %}
+                <div class="border-swiss-top pt-3 mt-3 text-start small text-secondary">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>Nama Resmi:</span>
+                        <strong class="text-dark">{{ profil.nama_perusahaan }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Email Kontak:</span>
+                        <strong class="text-dark">{{ profil.email }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visi & Misi -->
+    <div class="row g-4 mb-5 pb-5 border-swiss-bottom">
+        <div class="col-md-6">
+            <div class="swiss-feature-box">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="swiss-tag accent mb-0">VISI STRATEGIS</span>
+                    <span class="swiss-feature-num mb-0">[ VISI ]</span>
+                </div>
+                <h3 class="h4 fw-bold mb-3">Arah Masa Depan</h3>
+                <div class="text-secondary" style="line-height: 1.75;">
+                    {{ profil.visi|linebreaks }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="swiss-feature-box">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="swiss-tag mb-0">MISI OPERASIONAL</span>
+                    <span class="swiss-feature-num mb-0">[ MISI ]</span>
+                </div>
+                <h3 class="h4 fw-bold mb-3">Langkah Nyata</h3>
+                <div class="text-secondary" style="line-height: 1.75;">
+                    {{ profil.misi|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nilai Perusahaan -->
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+            <span class="swiss-tag mb-2">BUDAYA KERJA</span>
+            <h2 class="h3 fw-bold mb-3">Nilai Perusahaan</h2>
+            <p class="text-secondary small mb-0">Prinsip utama yang menjadi panduan etika kerja dan kolaborasi di setiap
+                proyek yang kami tangani.</p>
+        </div>
+        <div class="col-lg-8">
+            <div class="text-secondary lead fw-bold px-5" style="line-height: 1.8; font-size: 1.1rem;">
+                {{ profil.nilai_perusahaan }}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}{{ item.nama_layanan }}{% endblock %}
+{% block content %}
+
+<!-- Breadcrumb bar -->
+<div class="border-swiss-bottom bg-white py-3">
+    <div class="container">
+        <a href="{% url 'company:produk_list' %}" class="btn-swiss-outline py-1 px-3 small" style="font-size: 0.8rem;">
+            <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Daftar Layanan
+        </a>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-5 align-items-start">
+        <div class="col-lg-6">
+            <div class="border-swiss p-2 bg-white rounded-1 shadow-sm">
+                {% if item.gambar %}
+                <img src="{{ item.gambar.url }}" class="img-fluid rounded-1 w-100" style="object-fit: cover; max-height: 400px;" alt="{{ item.nama_layanan }}">
+                {% else %}
+                <div class="py-5 text-center text-muted bg-light">
+                    <i class="fa-solid fa-cube fa-3x mb-2"></i>
+                    <p class="mb-0">Tidak ada gambar</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <span class="swiss-tag accent mb-2">SPESIFIKASI LAYANAN</span>
+            <h1 class="h2 fw-bold mb-3">{{ item.nama_layanan }}</h1>
+            <p class="lead text-secondary mb-4 pb-3 border-swiss-bottom" style="line-height: 1.6;">
+                {{ item.deskripsi_singkat }}
+            </p>
+
+            <div class="mb-4">
+                <h5 class="fw-bold mb-3 small text-uppercase" style="letter-spacing: 0.05em;">Deskripsi Lengkap:</h5>
+                <div class="text-secondary" style="line-height: 1.8;">
+                    {{ item.deskripsi_lengkap|linebreaks }}
+                </div>
+            </div>
+
+            <div class="p-4 bg-light border-swiss rounded-1 mt-4">
+                <h6 class="fw-bold mb-2">Tertarik mengimplementasikan layanan ini?</h6>
+                <p class="text-secondary small mb-3">Konsultasikan kebutuhan spesifik dan jadwal pengerjaan bersama tim teknis kami.</p>
+                <a href="{% url 'company:kontak' %}" class="btn-swiss-primary">
+                    <i class="fa-solid fa-envelope me-1"></i> Ajukan Permintaan / Pertanyaan
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

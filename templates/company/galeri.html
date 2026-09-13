@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Galeri Dokumentasi{% endblock %}
+{% block content %}
+
+<!-- Header -->
+<div class="border-swiss-bottom bg-white py-5">
+    <div class="container">
+        <span class="swiss-tag accent mb-2">04 / DOKUMENTASI VISUAL</span>
+        <h1 class="section-title mb-2">Galeri Kegiatan &amp; Fasilitas</h1>
+        <p class="section-lead mb-0">Dokumentasi aktivitas operasional, fasilitas laboratorium komputasi, dan implementasi proyek sistem informasi kami.</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        {% for foto in galeri %}
+        <div class="col-sm-6 col-lg-4">
+            <div class="swiss-card">
+                {% if foto.foto %}
+                <img src="{{ foto.foto.url }}" class="swiss-card-img" style="height: 240px; object-fit: cover;" alt="{{ foto.judul }}">
+                {% else %}
+                <div class="swiss-card-img d-flex align-items-center justify-content-center text-muted" style="height: 240px;">
+                    <i class="fa-solid fa-image fa-2x"></i>
+                </div>
+                {% endif %}
+                <div class="p-3 bg-white d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold mb-0 text-truncate" title="{{ foto.judul }}">{{ foto.judul }}</h6>
+                    <span class="text-muted small" style="font-family: var(--swiss-font-mono); font-size: 0.75rem;">
+                        {{ foto.diunggah_pada|date:"d/m/Y" }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5 border-swiss rounded-1 bg-white">
+            <p class="text-muted mb-0">Belum ada dokumentasi foto yang diunggah.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Produk &amp; Layanan{% endblock %}
+{% block content %}
+
+<!-- Header -->
+<div class="border-swiss-bottom bg-white py-5">
+    <div class="container">
+        <span class="swiss-tag accent mb-2">02 / DAFTAR LAYANAN</span>
+        <h1 class="section-title mb-2">Produk &amp; Layanan Kami</h1>
+        <p class="section-lead mb-0">Solusi teknologi inovatif yang dirancang untuk mendukung transformasi digital dan keandalan sistem bisnis Anda.</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        {% for item in produk %}
+        <div class="col-md-6 col-lg-4">
+            <div class="swiss-card">
+                {% if item.gambar %}
+                <img src="{{ item.gambar.url }}" class="swiss-card-img" alt="{{ item.nama_layanan }}">
+                {% else %}
+                <div class="swiss-card-img d-flex align-items-center justify-content-center text-muted">
+                    <i class="fa-solid fa-cube fa-2x"></i>
+                </div>
+                {% endif %}
+                <div class="swiss-card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="swiss-tag mb-0" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">LAYANAN {{ forloop.counter|stringformat:"02d" }}</span>
+                    </div>
+                    <h3 class="h5 fw-bold mb-2">{{ item.nama_layanan }}</h3>
+                    <p class="text-secondary small mb-4 flex-grow-1" style="line-height: 1.6;">{{ item.deskripsi_singkat }}</p>
+                    <div class="pt-2 border-top border-swiss d-flex justify-content-between align-items-center">
+                        <a href="{% url 'company:produk_detail' item.pk %}" class="btn-swiss-outline py-1 px-3 small" style="font-size: 0.8rem;">
+                            Detail Spesifikasi <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5 border-swiss rounded-1 bg-white">
+            <p class="text-muted mb-0">Belum ada produk atau layanan yang ditambahkan.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
